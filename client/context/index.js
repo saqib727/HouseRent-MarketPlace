@@ -48,9 +48,36 @@ export const StateContextProvider = ({ children }) => {
 
     }
 
+    //get properties data
+    const getPropertiesData=async()=>{
+
+        try{
+            const properties=await contract.call("getAllProperty");
+
+            const parsedProperties=properties.map((property,i)=>({
+                owner: property.owner,
+                title: property.propertyTitle,
+                description: property.description,
+                category: property.category,
+                price: ethers.utils.formatEther(property.price.toString()),
+                productid:property.productid.toNumber(),
+                reviewers:property.reviewers,
+                reviews:property.reviews,
+                image:property.images,
+                address: property.propertyAddress,
+
+            }));
+
+            return parsedProperties;
+        }
+        catch(err){
+            console.log("Error While lOading data",err)
+        }
+    }
+
 
     return (
-        <StateContext.Provider value={{ address, connect, contract, realEstate, createPropertyFunction }}>
+        <StateContext.Provider value={{ address, connect, contract, realEstate, createPropertyFunction ,getPropertiesData}}>
             {children}
         </StateContext.Provider>
     );
