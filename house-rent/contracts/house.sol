@@ -31,7 +31,7 @@ contract house {
 
     //Mapping
     mapping(uint256 => Property) private properties;
-    uint256 private propertyIndex; //track of number of properties
+    uint256 public propertyIndex; //track of number of properties
     mapping(uint256 => Review[]) private reviews;
 
     mapping(address => uint256[]) private userReviews;
