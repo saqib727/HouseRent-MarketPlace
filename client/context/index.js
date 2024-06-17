@@ -296,9 +296,6 @@ export const StateContextProvider = ({ children }) => {
     const {data:PropertyReSold_event}=useContractEvents(contract,"PropertyReSold");
     console.log(listedEvent);
 
-
-
-
     return (
         <StateContext.Provider value={{ address, connect, contract, realEstate, createPropertyFunction,getUserReviewsFunction ,getPropertiesData, updatePropertyFunction, updatePriceFunction, buyPropertyFunction, totalReviewFunction,addReviewFunction, LikeReviewFunction, getProductReviewsFunction, gethighestratedProduct, getOnePropertyData,getUserPropertiesFunction }}>
             {children}
